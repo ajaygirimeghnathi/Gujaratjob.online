@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gujarat Sarkari Naukri | Government Jobs in Gujarat</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #00688B;
+            --secondary-color: #FF9933;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #008B8B);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero {
+            background: url('https://www.gujaratindia.com/images/gujarat-banner.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+        
+        .search-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .search-box h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group select, 
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            align-self: flex-end;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+        
+        .jobs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+        }
+        
+        .job-header h3 {
+            margin-bottom: 5px;
+        }
+        
+        .job-body {
+            padding: 20px;
+        }
+        
+        .job-info {
+            margin-bottom: 15px;
+        }
+        
+        .job-info p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .job-info i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .apply-btn {
+            display: block;
+            text-align: center;
+            background-color: var(--success-color);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background-color: #218838;
+        }
+        
+        .departments {
+            background-color: var(--light-color);
+        }
+        
+        .department-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .department-item {
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .department-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-color), #008B8B);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #e68a00;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #495057;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero-content {
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .search-box {
+                margin-top: -30px;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                height: 250px;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .search-btn {
+                align-self: stretch;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Emblem_of_Gujarat.svg/1200px-Emblem_of_Gujarat.svg.png" alt="Gujarat Government Logo">
+                <h1>Gujarat <span>Sarkari Naukri</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#jobs">Latest Jobs</a></li>
+                    <li><a href="#departments">Departments</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Find Your Dream Government Job in Gujarat</h2>
+            <p>Explore thousands of Sarkari Naukri opportunities across various departments of Gujarat Government. Stay updated with the latest job notifications and recruitment information.</p>
+            <a href="#jobs" class="btn">Browse Jobs</a>
+        </div>
+    </section>
+
+    <!-- Job Search Section -->
+    <div class="container">
+        <div class="search-box">
+            <h3>Search Government Jobs</h3>
+            <form class="search-form" id="jobSearchForm">
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department" name="department">
+                        <option value="">All Departments</option>
+                        <option value="education">Education</option>
+                        <option value="health">Health & Family Welfare</option>
+                        <option value="police">Police Department</option>
+                        <option value="revenue">Revenue Department</option>
+                        <option value="panchayat">Panchayat & Rural Development</option>
+                        <option value="transport">Transport Department</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <select id="location" name="location">
+                        <option value="">All Gujarat</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="surat">Surat</option>
+                        <option value="vadodara">Vadodara</option>
+                        <option value="rajkot">Rajkot</option>
+                        <option value="gandhinagar">Gandhinagar</option>
+                        <option value="bhavnagar">Bhavnagar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobType">Job Type</label>
+                    <select id="jobType" name="jobType">
+                        <option value="">All Types</option>
+                        <option value="fulltime">Full-time</option>
+                        <option value="parttime">Part-time</option>
+                        <option value="contract">Contract</option>
+                        <option value="temporary">Temporary</option>
+                    </select>
+                </div>
+                <div class="form-group search-btn">
+                    <button type="submit" class="btn">Search Jobs</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Latest Jobs Section -->
+    <section class="section" id="jobs">
+        <div class="container">
+            <h2 class="section-title">Latest Government Jobs in Gujarat</h2>
+            <div class="jobs-container" id="jobsContainer">
+                <!-- Jobs will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="section departments" id="departments">
+        <div class="container">
+            <h2 class="section-title">Government Departments</h2>
+            <div class="department-list">
+                <div class="department-item">Education Department</div>
+                <div class="department-item">Health & Family Welfare</div>
+                <div class="department-item">Police Department</div>
+                <div class="department-item">Revenue Department</div>
+                <div class="department-item">Panchayat & Rural Development</div>
+                <div class="department-item">Transport Department</div>
+                <div class="department-item">Finance Department</div>
+                <div class="department-item">Agriculture Department</div>
+                <div class="department-item">Forest Department</div>
+                <div class="department-item">Urban Development</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Get Job Alerts in Your Email</h2>
+            <p>Subscribe to our newsletter and receive the latest Gujarat government job notifications directly in your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gujarat Sarkari Naukri</h3>
+                    <p>Your one-stop destination for all government job opportunities in Gujarat. We provide the latest and most accurate information about Sarkari Naukri in Gujarat state.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f">f</i></a>
+                        <a href="#"><i class="fab fa-twitter">t</i></a>
+                        <a href="#"><i class="fab fa-linkedin-in">in</i></a>
+                        <a href="#"><i class="fab fa-instagram">ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#jobs">Latest Jobs</a></li>
+                        <li><a href="#departments">Departments</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Important Links</h3>
+                    <ul>
+                        <li><a href="https://ojas.gujarat.gov.in" target="_blank">Ojas Gujarat</a></li>
+                        <li><a href="https://gujarat.gov.in" target="_blank">Gujarat Government</a></li>
+                        <li><a href="https://www.gseb.org" target="_blank">GSEB</a></li>
+                        <li><a href="https://gpsc.gujarat.gov.in" target="_blank">GPSC</a></li>
+                        <li><a href="https://www.gujaratslsa.org" target="_blank">Gujarat High Court</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Block No. 5, 3rd Floor</li>
+                        <li>Udyog Bhavan, Gandhinagar</li>
+                        <li>Gujarat - 382010</li>
+                        <li>Phone: +91 79 2325 0505</li>
+                        <li>Email: info@gujaratsarkarinaukri.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Gujarat Sarkari Naukri. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript Code
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample job data
+            const jobs = [
+                {
+                    title: "Staff Nurse",
+                    department: "Health & Family Welfare",
+                    location: "Ahmedabad",
+                    type: "Full-time",
+                    vacancies: 125,
+                    lastDate: "15-12-2023",
+                    applyLink: "#"
+                },
+                {
+                    title: "Police Constable",
+                    department: "Police Department",
+                    location: "Surat",
+                    type: "Full-time",
+                    vacancies: 500,
+                    lastDate: "20-12-2023",
+                    applyLink: "#"
+                },
+                {
+                    title: "Primary Teacher",
+                    department: "Education",
+                    location: "Rajkot",
+                    type: "Full-time",
+                    vacancies: 350,
+                    lastDate: "10-01-2024",
+                    applyLink: "#"
+                },
+                {
+                    title: "Accountant",
+                    department: "Finance Department",
+                    location: "Gandhinagar",
+                    type: "Full-time",
+                    vacancies: 45,
+                    lastDate: "05-01-2024",
+                    applyLink: "#"
+                },
+                {
+                    title: "Junior Engineer",
+                    department: "Urban Development",
+                    location: "Vadodara",
+                    type: "Full-time",
+                    vacancies: 75,
+                    lastDate: "25-12-2023",
+                    applyLink: "#"
+                },
+                {
+                    title: "Agriculture Officer",
+                    department: "Agriculture Department",
+                    location: "Bhavnagar",
+                    type: "Full-time",
+                    vacancies: 30,
+                    lastDate: "18-12-2023",
+                    applyLink: "#"
+                }
+            ];
+
+            // Display jobs
+            const jobsContainer = document.getElementById('jobsContainer');
+            
+            function displayJobs(jobsToDisplay) {
+                jobsContainer.innerHTML = '';
+                
+                jobsToDisplay.forEach(job => {
+                    const jobCard = document.createElement('div');
+                    jobCard.className = 'job-card';
+                    jobCard.innerHTML = `
+                        <div class="job-header">
+                            <h3>${job.title}</h3>
+                            <p>${job.department}</p>
+                        </div>
+                        <div class="job-body">
+                            <div class="job-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Location: ${job.location}</p>
+                                <p><i class="fas fa-briefcase"></i> Job Type: ${job.type}</p>
+                                <p><i class="fas fa-users"></i> Vacancies: ${job.vacancies}</p>
+                                <p><i class="fas fa-calendar-alt"></i> Last Date: ${job.lastDate}</p>
+                            </div>
+                            <a href="${job.applyLink}" class="apply-btn">Apply Now</a>
+                        </div>
+                    `;
+                    jobsContainer.appendChild(jobCard);
+                });
+            }
+            
+            // Initial display of all jobs
+            displayJobs(jobs);
+            
+            // Job search functionality
+            const jobSearchForm = document.getElementById('jobSearchForm');
+            
+            jobSearchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const department = document.getElementById('department').value.toLowerCase();
+                const location = document.getElementById('location').value.toLowerCase();
+                const jobType = document.getElementById('jobType').value.toLowerCase();
+                
+                const filteredJobs = jobs.filter(job => {
+                    return (department === '' || job.department.toLowerCase().includes(department)) &&
+                           (location === '' || job.location.toLowerCase().includes(location)) &&
+                           (jobType === '' || job.type.toLowerCase().includes(jobType));
+                });
+                
+                displayJobs(filteredJobs);
+                
+                if (filteredJobs.length === 0) {
+                    jobsContainer.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No jobs found matching your criteria. Please try different filters.</p>';
+                }
+            });
+            
+            // Newsletter subscription
+            const newsletterForm = document.getElementById('newsletterForm');
+            
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input').value;
+                
+                // In a real application, you would send this to your server
+                alert(`Thank you for subscribing with ${email}! You will now receive job alerts.`);
+                newsletterForm.reset();
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Department filter
+            document.querySelectorAll('.department-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const deptName = this.textContent;
+                    const filteredJobs = jobs.filter(job => job.department === deptName);
+                    
+                    if (filteredJobs.length > 0) {
+                        displayJobs(filteredJobs);
+                        window.scrollTo({
+                            top: document.getElementById('jobs').offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        jobsContainer.innerHTML = `<p style="grid-column:1/-1;text-align:center;">No current openings in ${deptName}. Check back later.</p>`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
